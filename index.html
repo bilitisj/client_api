@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client API</title>
+</head>
+<style>
+    body {
+        font-family: sans-serif;
+        margin: 0;
+    }
+
+    header {
+        background: rgb(246, 161, 151);
+        display: flex;
+        justify-content: center;
+        padding: .2rem;
+    }
+
+    main {
+        margin: 2rem 1rem;
+    }
+
+    .sidebar {
+        display: flex;
+        gap: 3rem;
+    }
+    
+    .categories {
+        background: rgb(239, 238, 238);
+        padding: 1rem 1.5rem;
+        border-radius: .5rem;
+    }
+    .categories-list {
+        padding: 0;
+        display: grid;
+        justify-content: center;
+    }
+    .produits {
+        padding: 1rem;
+        border: 1px solid rgb(239, 238, 238);
+        border-radius: .5rem;
+    }
+
+    li {
+        list-style-type: none;
+        padding-bottom: .8rem;
+        color: grey;
+        cursor: pointer;
+        display: grid;
+        justify-content: start;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    footer {
+        background: rgb(246, 161, 151);
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+        
+    }
+</style>
+<body>
+
+    <div class="page">
+        <header>
+            <h1>Client API</h1>
+        </header>
+        <main>
+            <div class="sidebar">
+                <div class="categories" >
+                    <h2>Catégories</h2>
+                    <ul class="categories-list">
+                        <li><a href="#">Catégorie 1</a></li>
+                        <li><a href="#">Catégorie 2</a></li>
+                    </ul>
+                </div>
+                <div class="produits">
+                    <h2>Produits de <span class="titre-categorie"></span></h2>
+                    <ul class="produits-list">
+                        <li><a href="#">Produit 1</a></li>
+                        <li><a href="#">Produit 2</a></li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        <footer>
+            &copy 2022 - Cepegra
+        </footer>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
