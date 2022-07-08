@@ -1,4 +1,4 @@
-const urlApi = 'http://localhost:8888/api_php/';
+const urlApi = 'https://bilitis-jambon.go.yo.fr/API_php/';
 const catListe = document.querySelector('.categories-list');
 const prodListe = document.querySelector('.produits-list');
 const catTitle = document.querySelector('.titre-categorie');
