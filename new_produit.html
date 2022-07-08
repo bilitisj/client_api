@@ -6,51 +6,82 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Document</title>
             <style>
-                form {
+                body {
+                    font-family: sans-serif;
+                }
+                .form-produit {
                     display: grid;
                     width: 20rem;
+                    padding: 2rem;
+                    background:linear-gradient(90deg, rgba(250,152,126,1) 0%, rgba(218,16,68,1) 100%);
+                    border-radius: .5rem;
                 }
-                input, select {
+                input {
                     margin-bottom: 2rem;
+                    height: 2rem;
+                    width: 15rem;
+                    appearance: none;
+                    border: none;
+                    border-radius: .5rem;
+                    padding: .2rem .5rem;
+                }
+                .form-produit_cat {
+                    margin-bottom: 2rem;
+                    height: 2rem;
+                    width: 15rem;
+                    border: none;
+                    border-radius: .5rem;
+                    padding: .2rem .5rem;
                 }
                 label {
                     margin-bottom: .3rem;
                 }
 
-                button{
+                .form-produit_btn{
                     width: 8rem;
+                    border: none;
+                    border-radius: .5rem;
+                    margin-top: 1rem;
+                    padding: .7rem 1rem;
+                    background: #7a0213;
+                    box-shadow: 0px 3px 6px 0px #6d0b237d;
+                    color: white;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
                 }
             </style>
         </head>
         <body>
-            <form action="" class="new-produit">
+            <form action="" class="form-produit">
                 <h2>Ajout d'un produit</h2>
 
                 <label for="">Nom du produit</label>
-                <input type="text" class="nom_produit" placeholder="Nom du produit" >
+                <input type="text" class="form-produit_nom" placeholder="Nom du produit" >
 
                 <label for="">Prix du produit</label>
-                <input type="text" class="prix_produit" placeholder="Prix du produit" >
+                <input type="text" class="form-produit_prix" placeholder="Prix du produit" >
 
                 <label for="">Catégorie :</label>
-                <select name="id_categorie" class="id_categorie">
+                <select name="id_categorie" class="form-produit_cat">
                     <option value="1">Fruits</option>
                     <option value="2">Légumes</option>
                     <option value="3">Conserves</option>
                     <option value="4">Boissons</option>
                 </select>
                 
-                <button class="btn">Valider</button>
+                <button class="form-produit_btn">Valider</button>
             </form>
         </body>
         <script>
-            const formAddProd = document.querySelector('.new-produit')
+            // VARIABLES
+            const formAddProd = document.querySelector('.form-produit')
             const urlApi = 'http://localhost:8888/api_php/'
-            const nomProduit = document.querySelector('.nom_produit')
-            const prixProduit = document.querySelector('.prix_produit')
-            const catProduit = document.querySelector('.id_categorie')
-            const button = document.querySelector('.btn')
+            const nomProduit = document.querySelector('.form-produit_nom')
+            const prixProduit = document.querySelector('.form-produit_prix')
+            const catProduit = document.querySelector('.form-produit_cat')
+            const button = document.querySelector('.form-produit_btn')
 
+            // Ajouter un produit
             formAddProd.addEventListener('submit', (e) => {
                 e.preventDefault()
                 fetch(urlApi+ 'produits', {
@@ -70,6 +101,9 @@
                 })
                 .catch(error => console.log(error))
             })
+
+            // Liste catégorie DYNAMIQUE
+
 
         </script>
     </html>
