@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Nouvelle catégorie</title>
+        </head>
+        <body>
+            <h1>Nouvelle catégorie !</h1>
+            <form action="" class="new-categorie">
+                <input type="text" name="label" class="label">
+                <button>Ajouter !</button>
+            </form>
+        </body>
+        <script>
+            const formAddCat = document.querySelector('.new-categorie')
+            const urlApi = 'http://localhost:8888/api_php/'
+            formAddCat.addEventListener('submit', (e) => {
+                e.preventDefault()
+                fetch(urlApi+ '/categories', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type':'application/json'
+                    },
+                    body: JSON.stringify({
+                        nom: formAddCat.querySelector('.label').value,
+                        token: localStorage.token
+                    })
+                })
+                .then(response => response.json())
+                .then(response => {
+                    console.log(response)
+                    switch(response.code) {
+                        case 401:
+                            window.location.href = 'connexion.html'
+                        break;
+                        case 200:
+                            alert('catégorie ajoutée')
+                    }
+                })
+                .catch(error => console.log(error))
+            })
+        </script>
+    </html>
