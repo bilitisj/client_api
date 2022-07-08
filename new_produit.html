@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+    <html lang="fr">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+            <style>
+                form {
+                    display: grid;
+                    width: 20rem;
+                }
+                input, select {
+                    margin-bottom: 2rem;
+                }
+                label {
+                    margin-bottom: .3rem;
+                }
+
+                button{
+                    width: 8rem;
+                }
+            </style>
+        </head>
+        <body>
+            <form action="" class="new-produit">
+                <h2>Ajout d'un produit</h2>
+
+                <label for="">Nom du produit</label>
+                <input type="text" class="nom_produit" placeholder="Nom du produit" >
+
+                <label for="">Prix du produit</label>
+                <input type="text" class="prix_produit" placeholder="Prix du produit" >
+
+                <label for="">Catégorie :</label>
+                <select name="id_categorie" class="id_categorie">
+                    <option value="1">Fruits</option>
+                    <option value="2">Légumes</option>
+                    <option value="3">Conserves</option>
+                    <option value="4">Boissons</option>
+                </select>
+                
+                <button class="btn">Valider</button>
+            </form>
+        </body>
+        <script>
+            const formAddProd = document.querySelector('.new-produit')
+            const urlApi = 'http://localhost:8888/api_php/'
+            const nomProduit = document.querySelector('.nom_produit')
+            const prixProduit = document.querySelector('.prix_produit')
+            const catProduit = document.querySelector('.id_categorie')
+            const button = document.querySelector('.btn')
+
+            formAddProd.addEventListener('submit', (e) => {
+                e.preventDefault()
+                fetch(urlApi+ 'produits', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type':'application/json'
+                    },
+                    body: JSON.stringify({
+                        nom: nomProduit.value,
+                        prix: prixProduit.value,
+                        id_categorie: catProduit.value
+                    })
+                })
+                .then(response => response.json())
+                .then(response => {
+                    console.log(response)
+                })
+                .catch(error => console.log(error))
+            })
+
+        </script>
+    </html>
